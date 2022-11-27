@@ -10,7 +10,9 @@ from src.routers import  \
      health,
      books_route
      )
-#from config import settings
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI(
     title = 'Gutendex Search API',

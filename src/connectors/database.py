@@ -1,12 +1,10 @@
 import os
-#import psycopg2
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from config import settings
 
-SQLALCHEMY_DATABASE_URL = settings.database_url
 
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
