@@ -50,11 +50,14 @@ async def get_book_details(
     # Get the book info from the API
     books = GutendexConnector().get_book_by_id(book_id)
 
-
     # Get reviews
-    reviews = ReviewsManager().get_by_book_id(book_id)
+    rev_manager = ReviewsManager()
+    reviews = rev_manager.get_by_book_id(book_id)
 
     books.reviews = [rev.description for rev in reviews]    
+
+    # Get average rating
+    books.rating = round(rev_manager.get_average_rating(book_id),2)
 
     return {
         "status": "ok",

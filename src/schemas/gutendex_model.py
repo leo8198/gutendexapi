@@ -14,4 +14,5 @@ class GutendexModel(BaseModel):
     download_count: int
 
 class GutendexDetails(GutendexModel):
+    rating: Optional[float]
     reviews: Optional[List[str]]

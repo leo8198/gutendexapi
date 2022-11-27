@@ -2,7 +2,7 @@ from src.connectors.postgres_connector import BasicCrud
 from src.models.reviews import Reviews
 from typing import List
 from src.schemas.gutendex_model import GutendexModel
-
+from sqlalchemy.sql import func
 
 class ReviewsManager(BasicCrud):
 
@@ -15,3 +15,10 @@ class ReviewsManager(BasicCrud):
         ).filter(
             self.model.bookId == book_id
         ).all()
+
+    def get_average_rating(self, book_id: int) -> int:
+        return self.db.query(
+            func.avg(self.model.rating)
+        ).filter(
+            self.model.bookId == book_id
+        ).first()[0]
