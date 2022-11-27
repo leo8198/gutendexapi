@@ -12,3 +12,6 @@ class GutendexModel(BaseModel):
     authors: List[GutendexAuthorModel]
     languages: List[str]
     download_count: int
+
+class GutendexDetails(GutendexModel):
+    reviews: Optional[List[str]]

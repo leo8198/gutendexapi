@@ -12,7 +12,7 @@ from src.routers import  \
      )
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(".")
 
 app = FastAPI(
     title = 'Gutendex Search API',

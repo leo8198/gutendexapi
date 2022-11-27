@@ -4,6 +4,7 @@ from src.connectors.gutendex_connector import GutendexConnector
 from src.crud.reviews_crud import ReviewsManager
 from src.schemas.gutendex_model import GutendexModel
 from src.schemas.inputs.books_inputs import ReviewBook
+from src.crud.reviews_crud import ReviewsManager
 
 # Endpoint to handle the health check
 router = APIRouter(
@@ -17,7 +18,7 @@ async def search_book_by_title(
 ) -> List[GutendexModel]:
 
     # Get the book from the Gutendex API
-    books = GutendexConnector().get_book_by_name(title)
+    books = GutendexConnector().get_books_by_name(title)
     
     return {
         "status": "ok",
@@ -45,4 +46,17 @@ async def post_review_book(
 async def get_book_details(
     book_id: int,
 ):
-    return
+
+    # Get the book info from the API
+    books = GutendexConnector().get_book_by_id(book_id)
+
+
+    # Get reviews
+    reviews = ReviewsManager().get_by_book_id(book_id)
+
+    books.reviews = [rev.description for rev in reviews]    
+
+    return {
+        "status": "ok",
+        "books": books
+    }

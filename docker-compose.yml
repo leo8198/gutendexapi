@@ -35,7 +35,7 @@ services:
       - postgres
     hostname: gutendex
     volumes:
-      - ./src:/home/root/gutendex/app/
+      - ./src:/home/root/gutendex/src/
 
 volumes:
   postgres:
