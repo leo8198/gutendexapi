@@ -45,3 +45,8 @@ Run tests using pytest. The docker containers should be UP before you start runn
 Now, run the tests: <br>
 
 `pytest tests/`
+
+
+## Scalable architecture diagram
+
+A high-level scalable architecture diagram can be found [here](https://drive.google.com/file/d/1-ly-Ofqt8kf211gNSKqfTKwr8LWPPaTh/view?usp=share_link).
