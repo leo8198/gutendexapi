@@ -38,6 +38,10 @@ Use docker compose to run the service. <br>
 
 ## Tests
 
-Run tests using pytest. The docker containers should be UP before you start running the tests.
+Run tests using pytest. The docker containers should be UP before you start running the tests. You also should export the following env variable in your current environment (outside the container).
+
+- DATABASE_URL=postgresql://postgres:leotarla@localhost:5432/postgres <br>
+
+Now, run the tests: <br>
 
 `pytest tests/`

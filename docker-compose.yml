@@ -36,6 +36,8 @@ services:
     hostname: gutendex
     volumes:
       - ./src:/home/root/gutendex/src/
+    environment:
+      - DATABASE_URL=postgresql://postgres:leotarla@postgres:5432/postgres
 
 volumes:
   postgres:
